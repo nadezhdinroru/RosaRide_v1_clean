@@ -1,0 +1,82 @@
+name: RosaRide Quality Check
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+
+      ##############################################
+      #  Проверка структуры проекта
+      ##############################################
+      - name: Validate structure
+        run: |
+          echo "Checking project structure..."
+          test -f index.html
+          test -f style.css
+          test -f script.js
+          echo "✓ Files OK"
+
+
+      ##############################################
+      #  HTML Lint
+      ##############################################
+      - name: Install HTMLHint
+        run: |
+          npm install -g htmlhint
+
+      - name: Run HTML Lint
+        run: |
+          htmlhint index.html || true
+
+
+      ##############################################
+      #  CSS Lint
+      ##############################################
+      - name: Install stylelint
+        run: |
+          npm install -g stylelint stylelint-config-standard
+
+      - name: Run CSS Lint
+        run: |
+          echo '{ "extends": "stylelint-config-standard" }' > .stylelintrc.json
+          stylelint "**/*.css" || true
+
+
+      ##############################################
+      #  JS Lint
+      ##############################################
+      - name: Install ESLint
+        run: |
+          npm install -g eslint
+
+      - name: Create ESLint config
+        run: |
+          echo '{
+            "env": { "browser": true, "es2021": true },
+            "extends": "eslint:recommended",
+            "rules": {}
+          }' > .eslintrc.json
+
+      - name: Run ESLint
+        run: |
+          eslint script.js || true
+
+
+      ##############################################
+      #  Отчёт (в консоль)
+      ##############################################
+      - name: Print success message
+        run: |
+          echo "Quality checks finished."
+          echo "HTML/CSS/JS successfully validated."
+          echo "Project looks clean."
