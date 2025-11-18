@@ -9,3 +9,4 @@ document.getElementById("btn-rent").onclick = () => {
 document.getElementById("btn-instructors").onclick = () => {
   alert("Переход к списку инструкторов");
 };
+console.log("test");
