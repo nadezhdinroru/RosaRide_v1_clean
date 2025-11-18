@@ -13,7 +13,6 @@ console.log("test");
 const a = 5;
 console.log(a);
 
-
-console.log("hook test")
+console.log("hook test");
 
 console.log("hook test 123");
