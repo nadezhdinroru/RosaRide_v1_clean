@@ -2,56 +2,42 @@ name: RosaRide CI/CD
 
 on:
   push:
-    branches:
+    branches: 
       - main
-  workflow_dispatch:
 
 jobs:
-  build:
+  check:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Set up Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-
-      - name: Install dependencies (если появятся)
+      - name: Validate project structure
         run: |
-          if [ -f package.json ]; then
-            npm install
-          else
-            echo "package.json отсутствует — пропускаем установку зависимостей"
-          fi
+          echo "Checking files..."
+          ls -la
+          test -f index.html
+          test -f style.css
+          test -f script.js
+          echo "Structure OK"
 
-      - name: Build project (если появится сборка)
-        run: |
-          if [ -f package.json ]; then
-            npm run build
-          else
-            echo "build скрипта нет — проект статический"
-          fi
-
-      - name: Upload artifact for deployment
-        uses: actions/upload-artifact@v3
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
         with:
           name: rosa_ride_build
           path: |
             .
-          retention-days: 2
+          retention-days: 5
 
   deploy:
+    needs: check
     runs-on: ubuntu-latest
-    needs: build
 
     steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: rosa_ride_build
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Deploy via FTP/SFTP (позже подключим сервер)
-        run: echo "Этап деплоя подключим, когда будем выкладывать на сервер."
+      - name: Deploy (placeholder)
+        run: |
+          echo "Проект проверен и готов к деплою"
