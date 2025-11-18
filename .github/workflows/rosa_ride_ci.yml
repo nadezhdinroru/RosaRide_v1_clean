@@ -15,12 +15,25 @@ jobs:
 
       - name: Validate project structure
         run: |
-          echo "Checking files..."
+          echo "===== Проверка структуры проекта ====="
           ls -la
+
+          echo "[1] Проверка core-файлов"
           test -f index.html
           test -f style.css
           test -f script.js
-          echo "Structure OK"
+
+          echo "[2] Проверка папки assets"
+          test -d assets
+          test -d assets/icons
+          test -d assets/logo
+
+          echo "[3] Проверка отсутствия пустых файлов"
+          for f in $(find . -type f -size 0); do
+            echo "ПУСТОЙ ФАЙЛ: $f" && exit 1;
+          done
+
+          echo "[OK] Проект корректный, ошибок нет"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
