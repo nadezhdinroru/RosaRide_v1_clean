@@ -1,55 +1,55 @@
-:root{
-  --snow:#f7f9fc;
-  --ice:#d6eaff;
-  --blue:#4eaaff;
-  --shadow:0 10px 30px rgba(0,0,0,.08);
-  --text:#1b1e24;
+:root {
+  --snow: #f7f9fc;
+  --ice: #d6eaff;
+  --blue: #4eaaff;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --text: #1b1e24;
 }
 
-body.snow{
-  margin:0;
-  padding:0;
-  background:var(--snow);
-  font-family:Inter,system-ui;
-  color:var(--text);
+body.snow {
+  margin: 0;
+  padding: 0;
+  background: var(--snow);
+  font-family: Inter, system-ui;
+  color: var(--text);
 }
 
-.header{
-  padding:30px 20px;
-  text-align:center;
+.header {
+  padding: 30px 20px;
+  text-align: center;
 }
 
-.logo{
-  width:80px;
-  opacity:.92;
+.logo {
+  width: 80px;
+  opacity: 0.92;
 }
 
-.hero-title{
-  margin:10px 0 0;
-  font-size:36px;
-  font-weight:700;
+.hero-title {
+  margin: 10px 0 0;
+  font-size: 36px;
+  font-weight: 700;
 }
 
-.main{
-  margin-top:40px;
-  display:flex;
-  flex-direction:column;
-  gap:20px;
-  padding:0 20px;
+.main {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0 20px;
 }
 
-.btn{
-  padding:18px;
-  font-size:20px;
-  background:var(--blue);
-  border:none;
-  border-radius:14px;
-  color:white;
-  cursor:pointer;
-  box-shadow:var(--shadow);
-  transition:.25s;
+.btn {
+  padding: 18px;
+  font-size: 20px;
+  background: var(--blue);
+  border: none;
+  border-radius: 14px;
+  color: white;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: 0.25s;
 }
 
-.btn:hover{
-  transform:translateY(-2px);
+.btn:hover {
+  transform: translateY(-2px);
 }
