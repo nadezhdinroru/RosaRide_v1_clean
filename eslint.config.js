@@ -6,13 +6,13 @@ export default [
     files: ["**/*.js"],
     languageOptions: {
       ecmaVersion: "latest",
-      sourceType: "module",
+      sourceType: "module"
     },
     rules: {
       "no-unused-vars": "warn",
       "no-undef": "warn",
       semi: ["error", "always"],
-      quotes: ["error", "double"],
-    },
-  },
+      quotes: ["error", "double"]
+    }
+  }
 ];
