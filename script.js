@@ -5,7 +5,7 @@ const SCREENS = {
   student: document.getElementById("screen-student-flow"),
   instructor: document.getElementById("screen-instructor"),
   partner: document.getElementById("screen-partner"),
-  admin: document.getElementById("screen-admin"),
+  admin: document.getElementById("screen-admin")
 };
 
 const currentRoleLabel = document.getElementById("current-role-label");
@@ -19,7 +19,7 @@ const MOCK_INSTRUCTORS = [
     resort: "rosa-khutor",
     sport: "ski",
     days: ["2025-01-20", "2025-01-21", "2025-01-22"],
-    price: 8000,
+    price: 8000
   },
   {
     id: 2,
@@ -28,7 +28,7 @@ const MOCK_INSTRUCTORS = [
     resort: "krasnaya-polyana",
     sport: "snowboard",
     days: ["2025-01-20", "2025-01-23"],
-    price: 10000,
+    price: 10000
   },
   {
     id: 3,
@@ -37,7 +37,7 @@ const MOCK_INSTRUCTORS = [
     resort: "rosa-khutor",
     sport: "ski",
     days: ["2025-01-21", "2025-01-22"],
-    price: 10000,
+    price: 10000
   },
   {
     id: 4,
@@ -46,15 +46,15 @@ const MOCK_INSTRUCTORS = [
     resort: "laura",
     sport: "ski",
     days: ["2025-01-20"],
-    price: 5000,
-  },
+    price: 5000
+  }
 ];
 
 /* ===== Состояние бронирования ученика ===== */
 const bookingState = {
   sport: null,
   resort: null,
-  date: null,
+  date: null
 };
 
 /* ===== Сервисные функции ===== */
@@ -82,7 +82,7 @@ function setRole(roleKey) {
 }
 
 function showScreen(screenId) {
-  Object.values(SCREENS).forEach((s) => s.classList.remove("is-active"));
+  Object.values(SCREENS).forEach(s => s.classList.remove("is-active"));
 
   const toShow = SCREENS[screenId];
   if (toShow) {
@@ -91,7 +91,7 @@ function showScreen(screenId) {
 }
 
 /* ===== Навигация по ролям ===== */
-document.querySelectorAll(".role-card").forEach((btn) => {
+document.querySelectorAll(".role-card").forEach(btn => {
   btn.addEventListener("click", () => {
     const role = btn.dataset.role;
     setRole(role);
@@ -109,33 +109,25 @@ document.querySelectorAll(".role-card").forEach((btn) => {
 });
 
 /* ===== Кнопки “назад к выбору роли” ===== */
-document
-  .getElementById("btn-back-to-role-from-student")
-  .addEventListener("click", () => {
-    showScreen("roleSelect");
-    setRole(null);
-  });
+document.getElementById("btn-back-to-role-from-student").addEventListener("click", () => {
+  showScreen("roleSelect");
+  setRole(null);
+});
 
-document
-  .getElementById("btn-back-to-role-from-instructor")
-  .addEventListener("click", () => {
-    showScreen("roleSelect");
-    setRole(null);
-  });
+document.getElementById("btn-back-to-role-from-instructor").addEventListener("click", () => {
+  showScreen("roleSelect");
+  setRole(null);
+});
 
-document
-  .getElementById("btn-back-to-role-from-partner")
-  .addEventListener("click", () => {
-    showScreen("roleSelect");
-    setRole(null);
-  });
+document.getElementById("btn-back-to-role-from-partner").addEventListener("click", () => {
+  showScreen("roleSelect");
+  setRole(null);
+});
 
-document
-  .getElementById("btn-back-to-role-from-admin")
-  .addEventListener("click", () => {
-    showScreen("roleSelect");
-    setRole(null);
-  });
+document.getElementById("btn-back-to-role-from-admin").addEventListener("click", () => {
+  showScreen("roleSelect");
+  setRole(null);
+});
 
 /* ===== Логика выбора спорта / курорта / даты для ученика ===== */
 const sportOptions = document.getElementById("sport-options");
@@ -143,7 +135,7 @@ const resortOptions = document.getElementById("resort-options");
 const dateInput = document.getElementById("lesson-date");
 const instructorsList = document.getElementById("instructors-list");
 
-sportOptions.addEventListener("click", (e) => {
+sportOptions.addEventListener("click", e => {
   if (!(e.target instanceof HTMLButtonElement)) return;
   const value = e.target.dataset.value;
   if (!value) return;
@@ -153,7 +145,7 @@ sportOptions.addEventListener("click", (e) => {
   updateInstructorsList();
 });
 
-resortOptions.addEventListener("click", (e) => {
+resortOptions.addEventListener("click", e => {
   if (!(e.target instanceof HTMLButtonElement)) return;
   const value = e.target.dataset.value;
   if (!value) return;
@@ -163,7 +155,7 @@ resortOptions.addEventListener("click", (e) => {
   updateInstructorsList();
 });
 
-dateInput.addEventListener("change", (e) => {
+dateInput.addEventListener("change", e => {
   const value = e.target.value;
   bookingState.date = value || null;
   updateInstructorsList();
@@ -171,7 +163,7 @@ dateInput.addEventListener("change", (e) => {
 
 /* ===== Подсветка активного chip ===== */
 function markActiveChip(container, activeBtn) {
-  container.querySelectorAll(".chip").forEach((chip) => {
+  container.querySelectorAll(".chip").forEach(chip => {
     chip.classList.remove("is-active");
   });
   activeBtn.classList.add("is-active");
@@ -190,12 +182,8 @@ function updateInstructorsList() {
     return;
   }
 
-  const filtered = MOCK_INSTRUCTORS.filter((inst) => {
-    return (
-      inst.sport === sport &&
-      inst.resort === resort &&
-      inst.days.includes(date)
-    );
+  const filtered = MOCK_INSTRUCTORS.filter(inst => {
+    return inst.sport === sport && inst.resort === resort && inst.days.includes(date);
   });
 
   if (!filtered.length) {
@@ -209,13 +197,9 @@ function updateInstructorsList() {
   }
 
   const html = filtered
-    .map((inst) => {
+    .map(inst => {
       const categoryLabel =
-        inst.category === "A"
-          ? "Категория A · PRO"
-          : inst.category === "B"
-            ? "Категория B"
-            : "Категория C";
+        inst.category === "A" ? "Категория A · PRO" : inst.category === "B" ? "Категория B" : "Категория C";
 
       return `
         <button class="instructor-card" data-id="${inst.id}">
@@ -241,11 +225,9 @@ function updateInstructorsList() {
 }
 
 /* ===== Навигация нижнего меню (пока только маркер active) ===== */
-document.querySelectorAll(".nav-btn").forEach((btn) => {
+document.querySelectorAll(".nav-btn").forEach(btn => {
   btn.addEventListener("click", () => {
-    document
-      .querySelectorAll(".nav-btn")
-      .forEach((b) => b.classList.remove("is-active"));
+    document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("is-active"));
     btn.classList.add("is-active");
     // Здесь позже добавим реальные экраны: брони / профиль и т.п.
   });

@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Anti-cache для GitHub Pages -->
-    <meta
-      http-equiv="Cache-Control"
-      content="no-cache, no-store, must-revalidate"
-    />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
 
@@ -26,21 +23,14 @@
       <!-- Шапка -->
       <header class="app-header">
         <div class="brand">
-          <img
-            src="assets/logo/logo.png"
-            class="logo"
-            alt="Rosa Ride logo"
-            loading="lazy"
-          />
+          <img src="assets/logo/logo.png" class="logo" alt="Rosa Ride logo" loading="lazy" />
           <div class="brand-text">
             <div class="brand-title">Rosa Ride</div>
             <div class="brand-subtitle">Snow Premium Mini App v3</div>
           </div>
         </div>
 
-        <div class="current-role" id="current-role-label">
-          Роль: не выбрана
-        </div>
+        <div class="current-role" id="current-role-label">Роль: не выбрана</div>
       </header>
 
       <!-- Основная зона -->
@@ -48,41 +38,31 @@
         <!-- Экран выбора роли -->
         <section class="screen is-active" id="screen-role-select">
           <h1 class="screen-title">Кто вы?</h1>
-          <p class="screen-subtitle">
-            Выберите роль, чтобы мы показали нужное меню и функции.
-          </p>
+          <p class="screen-subtitle">Выберите роль, чтобы мы показали нужное меню и функции.</p>
 
           <div class="role-grid">
             <button class="card role-card" data-role="student">
               <div class="role-icon">🎿</div>
               <div class="role-name">Ученик</div>
-              <div class="role-desc">
-                Записаться на урок, посмотреть свои бронирования.
-              </div>
+              <div class="role-desc">Записаться на урок, посмотреть свои бронирования.</div>
             </button>
 
             <button class="card role-card" data-role="instructor">
               <div class="role-icon">🏂</div>
               <div class="role-name">Инструктор</div>
-              <div class="role-desc">
-                График, уроки, комиссии и статистика.
-              </div>
+              <div class="role-desc">График, уроки, комиссии и статистика.</div>
             </button>
 
             <button class="card role-card" data-role="partner">
               <div class="role-icon">🤝</div>
               <div class="role-name">Партнёр</div>
-              <div class="role-desc">
-                Клиенты по вашему QR, комиссии и отчёты.
-              </div>
+              <div class="role-desc">Клиенты по вашему QR, комиссии и отчёты.</div>
             </button>
 
             <button class="card role-card" data-role="admin">
               <div class="role-icon">🧭</div>
               <div class="role-name">Админ</div>
-              <div class="role-desc">
-                Полный контроль: брони, финансы, инструкторы, партнёры.
-              </div>
+              <div class="role-desc">Полный контроль: брони, финансы, инструкторы, партнёры.</div>
             </button>
           </div>
         </section>
@@ -90,9 +70,7 @@
         <!-- Экран ученика: поток бронирования -->
         <section class="screen" id="screen-student-flow">
           <h2 class="screen-title">Запись на урок</h2>
-          <p class="screen-subtitle">
-            Пройдите шаги: вид спорта → курорт → дата → инструктор.
-          </p>
+          <p class="screen-subtitle">Пройдите шаги: вид спорта → курорт → дата → инструктор.</p>
 
           <!-- Шаги -->
           <div class="steps">
@@ -104,9 +82,7 @@
               <div class="step-body">
                 <div class="chip-group" id="sport-options">
                   <button class="chip" data-value="ski">Горные лыжи</button>
-                  <button class="chip" data-value="snowboard">
-                    Сноуборд
-                  </button>
+                  <button class="chip" data-value="snowboard">Сноуборд</button>
                 </div>
               </div>
             </div>
@@ -118,12 +94,8 @@
               </div>
               <div class="step-body">
                 <div class="chip-group" id="resort-options">
-                  <button class="chip" data-value="rosa-khutor">
-                    Роза Хутор
-                  </button>
-                  <button class="chip" data-value="krasnaya-polyana">
-                    Красная Поляна
-                  </button>
+                  <button class="chip" data-value="rosa-khutor">Роза Хутор</button>
+                  <button class="chip" data-value="krasnaya-polyana">Красная Поляна</button>
                   <button class="chip" data-value="laura">Лаура</button>
                 </div>
               </div>
@@ -135,121 +107,84 @@
                 <span class="step-title">На какое число записаться?</span>
               </div>
               <div class="step-body">
-                <input
-                  type="date"
-                  id="lesson-date"
-                  class="date-input"
-                />
-                <p class="hint">
-                  После выбора даты мы покажем только тех инструкторов, у кого
-                  есть окна в этот день.
-                </p>
+                <input type="date" id="lesson-date" class="date-input" />
+                <p class="hint">После выбора даты мы покажем только тех инструкторов, у кого есть окна в этот день.</p>
               </div>
             </div>
 
             <div class="step" data-step="4" id="step-instructors">
               <div class="step-header">
                 <span class="step-badge">4</span>
-                <span class="step-title">
-                  Доступные инструкторы на выбранную дату
-                </span>
+                <span class="step-title">Доступные инструкторы на выбранную дату</span>
               </div>
               <div class="step-body">
                 <div id="instructors-list" class="instructor-list">
-                  <p class="muted">
-                    Выберите спорт, курорт и дату — и мы покажем доступных
-                    инструкторов.
-                  </p>
+                  <p class="muted">Выберите спорт, курорт и дату — и мы покажем доступных инструкторов.</p>
                 </div>
               </div>
             </div>
           </div>
 
-          <button class="btn-primary" id="btn-back-to-role-from-student">
-            ← Вернуться к выбору роли
-          </button>
+          <button class="btn-primary" id="btn-back-to-role-from-student">← Вернуться к выбору роли</button>
         </section>
 
         <!-- Экран инструктора -->
         <section class="screen" id="screen-instructor">
           <h2 class="screen-title">Панель инструктора</h2>
-          <p class="screen-subtitle">
-            Здесь будут: расписание, уроки, комиссии и статистика.
-          </p>
+          <p class="screen-subtitle">Здесь будут: расписание, уроки, комиссии и статистика.</p>
 
           <div class="card">
             <h3 class="card-title">Сегодня</h3>
             <p class="muted">
-              В этой версии — заглушка. На следующем шаге подключаем реальные
-              данные из сервера и твой архив.
+              В этой версии — заглушка. На следующем шаге подключаем реальные данные из сервера и твой архив.
             </p>
           </div>
 
-          <button class="btn-primary" id="btn-back-to-role-from-instructor">
-            ← Вернуться к выбору роли
-          </button>
+          <button class="btn-primary" id="btn-back-to-role-from-instructor">← Вернуться к выбору роли</button>
         </section>
 
         <!-- Экран партнёра -->
         <section class="screen" id="screen-partner">
           <h2 class="screen-title">Кабинет партнёра</h2>
-          <p class="screen-subtitle">
-            Клиенты по вашему QR, комиссии и история.
-          </p>
+          <p class="screen-subtitle">Клиенты по вашему QR, комиссии и история.</p>
 
           <div class="card">
             <h3 class="card-title">Ваш QR-код</h3>
-            <p class="muted">
-              Здесь будет отображаться ваш уникальный QR, статистика и клиенты.
-            </p>
+            <p class="muted">Здесь будет отображаться ваш уникальный QR, статистика и клиенты.</p>
           </div>
 
-          <button class="btn-primary" id="btn-back-to-role-from-partner">
-            ← Вернуться к выбору роли
-          </button>
+          <button class="btn-primary" id="btn-back-to-role-from-partner">← Вернуться к выбору роли</button>
         </section>
 
         <!-- Экран админа -->
         <section class="screen" id="screen-admin">
           <h2 class="screen-title">NikSoN Control Panel</h2>
-          <p class="screen-subtitle">
-            Управление всеми процессами: брони, финансы, инструкторы, партнёры.
-          </p>
+          <p class="screen-subtitle">Управление всеми процессами: брони, финансы, инструкторы, партнёры.</p>
 
           <div class="admin-grid">
             <button class="card admin-card">
               <div class="admin-icon">📊</div>
               <div class="admin-title">Дашборд</div>
-              <div class="admin-desc">
-                Общая картина по урокам, выручке и загрузке.
-              </div>
+              <div class="admin-desc">Общая картина по урокам, выручке и загрузке.</div>
             </button>
             <button class="card admin-card">
               <div class="admin-icon">🧑‍🏫</div>
               <div class="admin-title">Инструкторы</div>
-              <div class="admin-desc">
-                Список, категории, графики работы и статусы.
-              </div>
+              <div class="admin-desc">Список, категории, графики работы и статусы.</div>
             </button>
             <button class="card admin-card">
               <div class="admin-icon">🤝</div>
               <div class="admin-title">Партнёры</div>
-              <div class="admin-desc">
-                QR-коды, клиенты и комиссии.
-              </div>
+              <div class="admin-desc">QR-коды, клиенты и комиссии.</div>
             </button>
             <button class="card admin-card">
               <div class="admin-icon">🧾</div>
               <div class="admin-title">Финансы</div>
-              <div class="admin-desc">
-                Доход платформы, выплаты инструкторам и партнёрам.
-              </div>
+              <div class="admin-desc">Доход платформы, выплаты инструкторам и партнёрам.</div>
             </button>
           </div>
 
-          <button class="btn-primary" id="btn-back-to-role-from-admin">
-            ← Вернуться к выбору роли
-          </button>
+          <button class="btn-primary" id="btn-back-to-role-from-admin">← Вернуться к выбору роли</button>
         </section>
       </main>
 
